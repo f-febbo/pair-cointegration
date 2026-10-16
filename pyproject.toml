@@ -16,7 +16,7 @@ test = ["pytest>=8,<10"]
 pairs-research = "sector_pairs.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["sector_pairs*"]
+include = ["sector_pairs*", "experiments*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
