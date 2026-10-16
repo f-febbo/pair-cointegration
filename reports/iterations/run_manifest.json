@@ -1,0 +1,108 @@
+{
+  "source_sha256": "c0b320f2379a78a89e1efbce02cbd19fd1ee9cae2a84a10bf09844bd9f2c4f6c",
+  "config": {
+    "start": "2004-09-29",
+    "end": "2026-10-08",
+    "split": 0.7,
+    "windows": [
+      126,
+      252,
+      504
+    ],
+    "horizons": [
+      5,
+      20,
+      60
+    ],
+    "rolling_mean_days": 756,
+    "entry": 1.5,
+    "exit": 0.25,
+    "cost": 0.0005,
+    "filter_quantile": 0.9,
+    "reduced_exposure": 0.5,
+    "seed": 20261015,
+    "bootstrap_reps": 499
+  },
+  "code_sha256": {
+    "experiments/engine.py": "44d03f77a1668e793cb6ff8fdcc4373155a9028e30962dc6365d58fe3b1d7f9f",
+    "experiments/run.py": "28987cac24ea50cb0243b53735d6ab3c7ef1125e4ff1482eff4d36dfd6b7806c",
+    "experiments/report.py": "fb69c953af202d4f677a7e7d444366e50464b7dabbbbf3a4272ee510f3c7c4d8",
+    "experiments/__init__.py": "dcbc41e71d380cb0e6f06e39060ccc6414f36b3d6a1441c8099b7c0fafa34df1",
+    "experiments/strategies/equilibrium.py": "cf0fbf34daef58ca342fad47a48bdc58fcc86500c5fe834bc9beb89ef54390c0",
+    "experiments/strategies/timeout_reset.py": "632177d7a393cc7683d407101021fdd51a2b86e7993be00349289f3a46076de6",
+    "experiments/strategies/local_calibration.py": "604f3566e9e447569c1ed3fb29b7f3e600b03538ec00061c0621cb940f985abb",
+    "experiments/strategies/__init__.py": "470927569e90280272376bddef703047aec43670a70287db68ad3f6c480da0c2"
+  },
+  "specifications": [
+    {
+      "name": "rolling_mean_126",
+      "family": "equilibrium",
+      "control": "rolling",
+      "mean_days": 126
+    },
+    {
+      "name": "rolling_mean_252",
+      "family": "equilibrium",
+      "control": "rolling",
+      "mean_days": 252
+    },
+    {
+      "name": "static_local_beta_entry",
+      "family": "local_calibration",
+      "control": "static",
+      "action": "entry_filter",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "static_local_beta_reduction",
+      "family": "local_calibration",
+      "control": "static",
+      "action": "reduction",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "rolling_local_beta_entry",
+      "family": "local_calibration",
+      "control": "rolling",
+      "action": "entry_filter",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "rolling_local_beta_reduction",
+      "family": "local_calibration",
+      "control": "rolling",
+      "action": "reduction",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "static_timeout_60_reset",
+      "family": "timeout_reset",
+      "control": "static",
+      "max_holding": 60,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "static_timeout_120_reset",
+      "family": "timeout_reset",
+      "control": "static",
+      "max_holding": 120,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "rolling_timeout_60_reset",
+      "family": "timeout_reset",
+      "control": "rolling",
+      "max_holding": 60,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "rolling_timeout_120_reset",
+      "family": "timeout_reset",
+      "control": "rolling",
+      "max_holding": 120,
+      "reset_after_timeout": true
+    }
+  ],
+  "number_of_candidates": 10,
+  "future_data_used": false
+}

@@ -1,0 +1,98 @@
+{
+  "specifications": [
+    {
+      "name": "rolling_mean_126",
+      "family": "equilibrium",
+      "control": "rolling",
+      "mean_days": 126
+    },
+    {
+      "name": "rolling_mean_252",
+      "family": "equilibrium",
+      "control": "rolling",
+      "mean_days": 252
+    },
+    {
+      "name": "static_local_beta_entry",
+      "family": "local_calibration",
+      "control": "static",
+      "action": "entry_filter",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "static_local_beta_reduction",
+      "family": "local_calibration",
+      "control": "static",
+      "action": "reduction",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "rolling_local_beta_entry",
+      "family": "local_calibration",
+      "control": "rolling",
+      "action": "entry_filter",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "rolling_local_beta_reduction",
+      "family": "local_calibration",
+      "control": "rolling",
+      "action": "reduction",
+      "local_quantile_days": 252
+    },
+    {
+      "name": "static_timeout_60_reset",
+      "family": "timeout_reset",
+      "control": "static",
+      "max_holding": 60,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "static_timeout_120_reset",
+      "family": "timeout_reset",
+      "control": "static",
+      "max_holding": 120,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "rolling_timeout_60_reset",
+      "family": "timeout_reset",
+      "control": "rolling",
+      "max_holding": 60,
+      "reset_after_timeout": true
+    },
+    {
+      "name": "rolling_timeout_120_reset",
+      "family": "timeout_reset",
+      "control": "rolling",
+      "max_holding": 120,
+      "reset_after_timeout": true
+    }
+  ],
+  "deployment": "2021-02-26",
+  "source_sha256": "c0b320f2379a78a89e1efbce02cbd19fd1ee9cae2a84a10bf09844bd9f2c4f6c",
+  "protocol_sha256": "0895adbc0d2878e4bd199f7e5646baf79d38c8d67a2d35d3070827056755e6a6",
+  "holdout_status": "Previously viewed; retrospective exploratory evaluation only",
+  "bounds": {
+    "selection": {
+      "start": "2004-09-29",
+      "end": "2020-02-26",
+      "n": 3879
+    },
+    "development": {
+      "start": "2020-02-27",
+      "end": "2022-10-14",
+      "n": 665
+    },
+    "validation": {
+      "start": "2022-10-17",
+      "end": "2024-10-10",
+      "n": 499
+    },
+    "test": {
+      "start": "2024-10-11",
+      "end": "2026-10-08",
+      "n": 499
+    }
+  }
+}

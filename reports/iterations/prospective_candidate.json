@@ -1,0 +1,15 @@
+{
+  "basis": "Validation net Sharpe improvement; positive return and ten-bp return improvement; drawdown deterioration at most one percentage point",
+  "validation_start": "2022-10-17",
+  "validation_end": "2024-10-10",
+  "strategy": "static_timeout_60_reset",
+  "future_paper_start": "2026-10-19",
+  "holdout_status": "All historical checks are exploratory; previously viewed test is not independent.",
+  "specification": {
+    "name": "static_timeout_60_reset",
+    "family": "timeout_reset",
+    "control": "static",
+    "max_holding": 60,
+    "reset_after_timeout": true
+  }
+}

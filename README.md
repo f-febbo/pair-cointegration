@@ -2,7 +2,24 @@
 
 A reproducible Python study of whether observable changes in historically cointegrated sector ETF relationships predict subsequent convergence and trading deterioration. Read the [research protocol](docs/research_protocol.md) before interpreting results.
 
-The supplied four-page reference was read in full. Its extracted text is preserved in [docs/reference_extracted.txt](docs/reference_extracted.txt); original path: `/mnt/c/users/febbo/Downloads/Sectors Pairs Trading.pdf`. Raw Yahoo downloads, a common-calendar adjusted-close CSV, and SHA256 provenance are included under `data/yahoo_20261016/`. Synthetic data are used only by unit tests.
+## Exploratory strategy iterations
+
+The follow-up study tests ten fixed candidates across local instability calibration, shorter equilibrium memory and time-out/reset strategies. It preserves the original replication and negative primary findings. Some variants improve historical return and Sharpe, but none establishes a stage-family-adjusted paired net-return advantage. The historical test has already been viewed, so every follow-up result is explicitly exploratory.
+
+- [Iteration summary](reports/iterations/summary.md)
+- [All strategies, cost stress, statistical checks and walk-forward results](reports/iterations/report.md)
+- [Fixed iteration protocol](experiments/protocol.md)
+- [Validation-only prospective paper candidate](reports/iterations/prospective_candidate.json)
+
+Run the complete declared batch, retaining every positive and negative variant:
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python -m experiments.run
+```
+
+The new rules use simple leg returns and charge actual daily leg turnover. Reports include the same candidates at five and ten basis points. `reports/iterations/daily/` preserves all portfolio series. The future paper start is October 19, 2026; no prospective returns or live trades are claimed.
+
+The supplied four-page reference was read in full. Its [PDF](docs/reference.pdf) and [extracted text](docs/reference_extracted.txt) are preserved. Raw Yahoo downloads, a common-calendar adjusted-close CSV, and SHA256 provenance are included under `data/yahoo_20261016/`. Synthetic data are used only by unit tests. Redundant daily original-study pair files and the large generated outcome panel are excluded from Git and can be rebuilt with the complete pipeline.
 
 ## Results
 
