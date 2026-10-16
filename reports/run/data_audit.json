@@ -1,0 +1,49 @@
+{
+  "manifest": {
+    "source": "Yahoo Finance via yfinance; Adj Close, auto_adjust=False, repair=False",
+    "retrieved_utc": "2026-10-16T17:06:51.531703+00:00",
+    "requested_start": "2004-09-29",
+    "requested_end_inclusive": "2026-10-08",
+    "adjustment": "Vendor dividend- and split-adjusted close; retrospective revisions possible.",
+    "yfinance_version": "1.7.0",
+    "sha256": "c0b320f2379a78a89e1efbce02cbd19fd1ee9cae2a84a10bf09844bd9f2c4f6c",
+    "raw_sha256": {
+      "XLK_raw.csv": "545065df7ee9277c7cc7b8ecfd5c30cf312e86d08ad45cc8c8dc792422a88e37",
+      "XLP_raw.csv": "86b61c698339c28cde30a687ee869598f45c9c55b72a0afe4d712dbef9edd11d",
+      "XLY_raw.csv": "9426995a26b30d8e28b6c2017655d908cde064f1617cf41274eacada04c5ecfa",
+      "XLU_raw.csv": "d971c97254e35f80c19e36f5b8a5e958f117f4022411d2abafc68c07ba152cf3",
+      "XLE_raw.csv": "90b300ce0a1146734d8aba9c94cb27fb6f324fe1717ab57c8b0a527834695125",
+      "XLV_raw.csv": "69614ae523a86f3c5b093961b32d44f8d225b004073311e46572d6082c6e2576",
+      "VOX_raw.csv": "28b199daa1bd01e15285b6c58e92ef4d7667a9ae32addac2c2d4d2c3fa47f838",
+      "XLB_raw.csv": "7bd37426ad0bc607a15568b273e8480cd6b42d0620092208fcb62fff14154eb0",
+      "XLI_raw.csv": "a854a79ed55ed2c20544a9147e5b5697a636993bf3284fdf6c8c1bb4421ca2e3",
+      "IYR_raw.csv": "16a3015285c3274408a97cde1a2ad0f424ae06287c0aae246c4d5898835a2ac3",
+      "XLF_raw.csv": "ed6f41c9bf9f32bfc6d6de5e97d62cafb200dc6348595ce5a75dd04bffabf0ef"
+    }
+  },
+  "missing_by_asset": {
+    "XLK": 0,
+    "XLF": 0,
+    "IYR": 0,
+    "XLV": 0,
+    "XLE": 0,
+    "XLI": 0,
+    "XLY": 0,
+    "XLP": 0,
+    "XLB": 0,
+    "XLU": 0,
+    "VOX": 0
+  },
+  "removed_dates": [],
+  "calendar": "Intersection of observed vendor daily sessions; no filling. All-asset absent dates cannot be detected without an exchange calendar.",
+  "observations": 5542,
+  "is_observations": 3879,
+  "oos_observations": 1663,
+  "actual_start": "2004-09-29",
+  "actual_end": "2026-10-08",
+  "is_end": "2020-02-26",
+  "oos_start": "2020-02-27",
+  "reference_boundaries_match": true,
+  "reference_counts_match": true,
+  "requested_endpoints_match": true
+}

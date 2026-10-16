@@ -1,0 +1,16 @@
+{
+  "baseline_pairs": 55,
+  "selected_pairs": 9,
+  "reported_returns_and_sharpes_match_rounding": true,
+  "reported_entry_counts_match": true,
+  "labels_stay_within_stages": true,
+  "thresholds_precede_validation": true,
+  "primary_tests": 4,
+  "primary_holm_significant": 0,
+  "predictive_rows": 264816,
+  "evaluated_comparisons": 576,
+  "insufficient_comparisons": 72,
+  "raw_checksums_verified": true,
+  "unit_tests_passed": 16,
+  "figure_pairs": 14
+}

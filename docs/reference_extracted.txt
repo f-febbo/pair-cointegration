@@ -1,0 +1,81 @@
+                               Pairs Trading on Sector ETFs: Method and Backtest Results
+           1 Data and setup
+           Daily dividend-adjusted closing prices of 11 sector ETFs (XLK, XLF, IYR, XLV, XLE, XLI, XLY, XLP, XLB, XLU, VOX), 2004-
+           09-29 to 2026-10-08. All prices are used in logs. The data are split by time: the first 70% is in-sample (2004-09-29 to 2020-02-26,
+           3,879 days) and is the only data used to select and fit pairs; the last 30% is out-of-sample (2020-02-27 to 2026-10-08, 1,663 days).
+           Nothing fitted in-sample is updated out-of-sample unless stated. Positions are decided at the close of day t−1 and earn the return
+           of day t. Each unit of position change costs 5 bp. Returns are per $1 of gross exposure.
+           2 Stationarity test (in-sample)
+           For every pair of ETFs (Y,X) (55 pairs), regress log prices on the in-sample data and form the spread
+                                                    s =lnPY −a−blnPX,             (a,b) = OLS fit.                                     (1)
+                                                     t      t             t
+           The spread is tested with the Engle–Granger test (an ADF test on s with critical values for an estimated residual). Both orderings
+                                                                             t
+           of each pair are tried and the lower p-value is kept. A pair is stationary if p < 0.10 (10% level). Example. For XLB / XLU
+           the fit gives b = 0.866: the spread is the part of XLB not explained by XLU. A stationary spread keeps returning to its mean; a
+           non-stationary one drifts away.
+                  Table 1: Pairs that are stationary in-sample (9 of 55). σ is the in-sample standard deviation of the spread.
+                                                Pair Y/X     EGt-stat   p-value    b       a      σ
+                                                XLU/XLK        -4.19     0.004   0.708   0.644  0.081
+                                                XLU/XLI        -3.95     0.009   0.833   -0.415 0.086
+                                                XLB/XLU        -3.87     0.011   0.866   0.535  0.093
+                                                XLV / XLY      -3.58     0.026   0.891   0.860  0.080
+                                                XLB/XLP        -3.50     0.032   0.725   0.378  0.105
+                                                XLI / XLV      -3.47     0.035   0.865   0.386  0.087
+                                                XLU/XLY        -3.35     0.048   0.654   0.488  0.104
+                                                XLB/XLI        -3.22     0.067   0.753   0.064  0.068
+                                                XLB/XLV        -3.18     0.073   0.644   0.383  0.108
+           3 Static-mean strategy
+           For each stationary pair, the in-sample mean µ and standard deviation σ of the spread are frozen, and the z-score is
+                                                                          s −µ
+                                                                     z = t      .                                                      (2)
+                                                                      t     σ
+           Rule: short the spread when z ≥ 1.5 (short Y, long b of X), long the spread when z ≤ −1.5, and close when |z | ≤ 0.25. The
+                                          t                                                     t                           t
+           position is set at the close and earns the next day’s return. Daily P&L is the return of the spread position per $1 of gross exposure,
+           less a 5 bp cost on any change in position. Example. Short the spread with b = 0.866. If Y falls 1.0% and X rises 0.5% in a day, the
+           spread falls by 1.43% (1.0%+0.866×0.5%), a gain of 0.77% per $1 of gross exposure (1.43% divided by 1+0.866). Out-of-sample,
+           the frozen spread is tested again with a standard ADF test (Table 2); the portfolio is the equal-weight average of the pair strategies.
+           4 Rolling-mean strategy
+           Same rule, hedge ratio b and σ, but the frozen mean is replaced by the average of the spread over the last 3 years (the window ends
+           at t), so z = (s − s¯ )/σ with s¯ the 3-year average. Example. If a spread drifts away and stays there, the rolling mean follows it
+                     t    t    t          t
+           and z returns toward zero; with a frozen mean, z stays large.
+                t                                          t
+           Table 2: Out-of-sample results by pair. ADF = test of the frozen out-of-sample spread. Return in %; Sharpe is
+           annualised, no risk-free rate subtracted.
+                                                     Out-of-sample ADF test        Static        Rolling 3 years
+                                       Pair         ADFstat      p    trades  Return   Sharpe   Return  Sharpe
+                                       XLU/XLK        -2.02    0.278    1      -29.3    -0.35   +17.9     0.30
+                                       XLU/XLI        -2.53    0.109    4      +24.2    0.54    +25.9     0.58
+                                       XLB/XLU        -3.32    0.014    5      +32.4    0.54    +25.0     0.52
+                                       XLV / XLY      -2.20    0.205    7      +50.8    0.86    +18.1     0.38
+                                       XLB/XLP        -3.92    0.002    2       -2.3    0.01    +14.3     0.36
+                                       XLI / XLV      -1.01    0.748    3      +3.0     0.10     -4.7    -0.07
+                                       XLU/XLY        -2.61    0.090    5      +42.4    0.65    +34.2     0.64
+                                       XLB/XLI        -2.22    0.198    3      +16.9    0.50     -2.5    -0.05
+                                       XLB/XLV        -2.77    0.063    3      +11.9    0.23    +20.2     0.44
+           5 Portfolios and SPY overlay
+           Sharpe ratio = annualised average daily return divided by the annualised standard deviation of daily returns; no risk-free rate is
+           subtracted.
+                                                                          1
+     Figure 1: Static-mean strategy, one block per pair. Top: growth of $1. Bottom: spread st (blue), frozen in-sample mean
+     (black) and ±1.5σ entry bands (red dashed). Orange shading = out-of-sample.
+     Figure 3: Combined portfolio of the 9 pair strategies, each with 1/9 of the capital: growth of $1 for the static-mean and
+     rolling-mean strategies.
+                               2
+             Figure 2: Rolling-mean strategy, one block per pair. Top: growth of $1. Bottom: spread (blue), 3-year rolling mean
+             (black) and ±1.5σ bands around it (red dashed).
+             Table 3: Portfolio backtests. Return and maximum drawdown in %. Last column: average share of capital in SPY,
+             out-of-sample.
+                                                                                   In-sample                      Out-of-sample
+                             Strategy                                    Return     Max DD      Sharpe    Return     Max DD      Sharpe    %in SPY
+                             Static mean, idle cash earns 0               +66.2       -8.3       0.90      +16.3       -6.2       0.55          –
+                             Rolling mean (3 years), idle cash earns 0    +33.9       -8.0       0.53      +17.3       -3.9       0.68          –
+                             Pairs (static mean) + SPY                   +458.1       -17.8      1.01      +55.0       -15.8      0.88         33
+                             Pairs (rolling mean, 3 years) + SPY         +456.3       -19.4      0.98     +112.2       -14.6      1.07         58
+                             SPY buy and hold                            +279.1       -55.2      0.57     +173.2       -28.3      0.86         100
+                                                                                        3
+     Figure 4: Growth of $1 (top) and share of capital held in SPY (bottom) for the two SPY-overlay strategies (static mean
+     and rolling mean) and SPY buy-and-hold.
+                               4

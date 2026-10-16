@@ -1,0 +1,11 @@
+{
+  "pair_sets_match": true,
+  "selected_count": 9,
+  "reference_only": [],
+  "reproduced_only": [],
+  "data_boundaries_match": true,
+  "max_absolute_beta_difference": 0.0003818579115036913,
+  "max_absolute_pair_return_difference": 0.0004911748211596789,
+  "exact_replication": false,
+  "status": "Evaluated against rounded PDF values; discrepancies retained. Exact replication cannot be certified without original raw snapshot/code."
+}

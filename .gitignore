@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.mplconfig/
+.yahoo_cache/
+*.egg-info/
+data/**/yahoo_cache/
+reports/*.log
+reports/run/predictive_panel.csv.gz
+reports/run/primary_forecasts.csv
+reports/run/XL*_*.csv
